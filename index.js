@@ -9,6 +9,7 @@ let app = express();
 
 app.get('/read', (req, res) => {
     let db = app.get('db');
+    console.log('going deeper a level');
     db.users.read_users().then(users => {
         res.status(200).send(users);
     })
