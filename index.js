@@ -1,6 +1,8 @@
 let express = require('express')
 let massive = require('massive')
 let bodyParser = require('body-parser')
+let session = require('express-session')
+
 require('dotenv').config()
 
 let {
