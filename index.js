@@ -5,9 +5,17 @@ require('dotenv').config()
 
 let {
     CONNECTION_STRING,
+    SERVER_PORT,
+    SECRET_SESSION
 } = process.env;
 let app = express();
 app.use(bodyParser.json())
+
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: SECRET_SESSION
+}))
 
 app.get('/read', (req, res) => {
     let db = app.get('db');
@@ -19,5 +27,5 @@ app.get('/read', (req, res) => {
 
 massive(CONNECTION_STRING).then(dbInstance => {
     app.set('db', dbInstance);
-    app.listen(4040, () => console.log('massive-testing on 4040'));
+    app.listen(SERVER_PORT, () => console.log('massive-testing on ' + SERVER_PORT));
 })
