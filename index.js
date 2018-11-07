@@ -6,6 +6,7 @@ let {
     CONNECTION_STRING,
 } = process.env;
 let app = express();
+app.use(bodyParser.json())
 
 app.get('/read', (req, res) => {
     let db = app.get('db');
