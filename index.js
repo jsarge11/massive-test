@@ -9,7 +9,7 @@ let app = express();
 
 app.get('/read', (req, res) => {
     let db = app.get('db');
-    db.read_users().then(users => {
+    db.users.read_users().then(users => {
         res.status(200).send(users);
     })
 })
